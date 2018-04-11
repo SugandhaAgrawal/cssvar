@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>CSS Variables</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background="#1EA5A3">
+					<h1>CSS Variables</h1>
+					<h3>What's the deal??</h3>
+						<small> Presenter - Sugandha Agrawal | FEDUp Meetup | 4th September,17 | IBM, Boeblingen Lab</small>
+				</section>
+
+				<section data-background="#1EA5A3">
+					<h3>CSS Variables Aka CSS Custom Properties</h3>
+					<p>
+						 A Variable is an element, feature, or factor that is liable to vary or change.
+					</p>
+				</section>
+
+        <section data-background="#1EA5A3">
+					<h2>CSS Variables</h2>
+					<p> var('custom-property-name' [, 'declaration-value'])
+						<pre>
+              <code class="hljs" data-trim contenteditable>
+                --heyFeds : red;
+                background: var(--heyFeds);
+              </code>
+            </pre>
+					</p>
+				</section>
+
+
+				<!-- Example of nested vertical slides -->
+				<section data-background="#1EA5A3">
+					<section data-background="#1EA5A3">
+						<h2>CSS Variables</h2>
+						<p>Some famous CSS Preprocessor and Postprocessor</p>
+						<div class="images">
+					    <img src="images/less.png" class="image-item"></img>
+							<img src="images/PostCSS.svg" class="image-item"></img>
+							<img src="images/sass.svg" class="image-item"></img>
+						</div>
+					</section>
+					<section data-background="https://media.giphy.com/media/ffJiLLtCk5Am4/giphy.gif">
+					</section>
+					<section data-background="#1EA5A3">
+						<h2>Basic comparison</h2>
+            <table>
+  						<thead>
+  							<tr>
+  								<th>Preprocessors</th>
+  								<th>Native Support</th>
+  							</tr>
+  						</thead>
+  						<tbody>
+  							<tr>
+  								<td>Static</td>
+  								<td>Dynamic</td>
+  							</tr>
+  							<tr>
+                  <td>Lexical Scope</td>
+  								<td>Dynamic Scoping</td>
+  							</tr>
+                <tr>
+                  <td>Variables cannot be used inside media-queries</td>
+                  <td>Media Queries is a Go Go!!! &#x270C;</td>
+                </tr>
+								<tr>
+                  <td>Variables dont cascade</td>
+                  <td>&#128588;</td>
+                </tr>
+								<tr>
+                  <td>No inheritance</td>
+                  <td>&#128526;</td>
+                </tr>
+								<tr>
+                  <td>Preprocessor Variables are not easily interoperable</td>
+                  <td>&#128523;</td>
+                </tr>
+  						</tbody>
+  					</table>
+					</section>
+  				<section data-background="#1EA5A3">
+						<h2>Sample</h2>
+  					<pre>
+              <code data-trim contenteditable>
+              $su: yellow;
+              .box1 {
+                $su-new: purple;
+                background: $su;
+              }
+              .box2 {
+                background: $su-new;
+              }
+    					</code>
+            </pre>
+          </section>
+          <section data-background="#1EA5A3">
+            <pre>
+              <code data-trim contenteditable>
+              :root {
+                --su: blue;
+              }
+              .box1 {
+                --su-new: white;
+                background: var(--su);
+              }
+              .box2 {
+                background: var(--su-new);
+              }
+              </code>
+            </pre>
+  				</section>
+        </section data-background="#1EA5A3">
+
+				<section data-background="https://media.giphy.com/media/JvlJSmxmKSXyE/giphy.gif">
+				</section>
+
+				<section data-background="#1EA5A3">
+          <section data-background="#1EA5A3">
+						<h2>CSS Variables</h2>
+						<p>
+							CSS Variable function declaration : var('custom-property-name' [, 'declaration-value'])
+							where 'declaration-value' is a fallback value to be used when the referenced custom property is invalid.
+						</p>
+        	</section>
+	        <section data-background="#1EA5A3">
+	          <h2>CSS Variables - Fallback</h2>
+						<p style="font-size: 32px;">&#x270F; Helpful for A Web Component dev to create an initial design using fallback values,
+						and expose theming “hooks” in the form of custom properties.</p>
+							<li>The chain</li>
+								<pre>
+									<code class="hljs" data-trim contenteditable>
+
+										color: var(--su-var, red);
+
+										color: var(--su-var, var(--su-new-var, green));
+
+										color: var(--su-var, var(--su-new-var, (var(--su-newer-var), yellow)));
+
+									</code>
+								</pre>
+								<p style="font-size: 32px;">&#x270F; This method causes performance issues.It makes browsers render pages
+								more slowly than normal as it takes more time to parse through the variables.</p>
+						</section>
+				</section>
+
+				<section data-background="#1EA5A3">
+					<section data-background="#1EA5A3">
+	         <h2>Fun parts &#127881; &#127881;</h2>
+	         <li>Inline Styling</li>
+					 	<pre>
+						 <code class="hljs" data-trim contenteditable>
+							 /* CSS */
+							 p {
+							  font-size: var(--su-size);
+							  color: var(--su-color);
+							}
+							-------------------------------------
+							<!-- HTML -->
+							<p style="--su-color: red; --su-size: 30px;">See the colour changing paragraph</p>
+						 </code>
+					 	</pre>
+					 </section>
+					 <section data-background="#1EA5A3">
+ 	         <h2>Fun parts &#127881; &#127881;</h2>
+ 	         <li>Inline Styling</li>
+ 					 	<pre>
+ 						 <code class="hljs" data-trim contenteditable>
+ 							 /* CSS */
+ 							 p {
+ 							  font-size: var(--su-size);
+ 							  color: var(--su-color);
+ 							}
+ 							-------------------------------------
+ 							<!-- HTML -->
+ 							<p style="--su-color: red; --su-size: 30px;">See the colour changing paragraph</p>
+ 						 </code>
+ 					 	</pre>
+ 					 </section>
+					<section data-background="#1EA5A3">
+						<h2>Fun parts &#127881; &#127881;</h2>
+	          <li>var() with cal()</li>
+							<pre>
+								<code class="hljs" data-trim contenteditable>
+									/* CSS */
+									:root {
+									  --su-color: red;
+									  --su-size: 10px;
+									}
+									p {
+									  font-size: calc(100px - var(--su-size));
+									  color: var(--su-color);
+									}
+									---------------------------------------------
+									<!-- HTML -->
+									<p>Hola FEDs!!!</p>
+								</code>
+							</pre>
+					</section>
+					<section data-background="#1EA5A3">
+						<h2>Fun parts &#127881; &#127881;</h2>
+          	<li>Media Queries - SCSS version</li>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+								$su-primary: blue;
+								$su-secondary: pink;
+								a {
+								  color: $su-primary;
+								  text-decoration-color: $su-secondary;
+
+								  @media screen and (min-width: 768px) {
+								    $su-primary: pink;
+								    $su-secondary: blue;
+								  }
+								}
+							</code>
+						</pre>
+					</section>
+					<section data-background="#1EA5A3">
+						<h2>Fun parts &#127881; &#127881;</h2>
+	          <li>Media Queries - CSS Version</li>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+								body {
+								  --su-primary: blue;
+								  --su-secondary: pink;
+								}
+								a {
+								  color: var(--su-primary);
+								  text-decoration-color: var(--su-secondary);
+								}
+								@media screen and (min-width: 768px) {
+								  body {
+								    --su-primary: pink;
+								    --su-secondary: blue;
+								  }
+								}
+							</code>
+						</pre>
+						<p style="font-size: 18px;">&#x270F;Though the css variables cant be used as media queries values : @media screen and (min-width: var(--su-desktop-bp))</p>
+					</section>
+					<section data-background="#1EA5A3">
+						<h2>Fun parts &#127881; &#127881;</h2>
+						<li>Reset all custom properties</li>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+							MyComponent {
+						  /* Resets all custom properties. */
+						  --: initial;
+						  /* Whitelists these individual custom properties */
+						  --someProperty: inherit;
+						  --someOtherProperty: inherit;
+						}
+							</code>
+						</pre>
+					</section>
+					<section data-background="#1EA5A3">
+						<h2>Fun parts &#127881; &#127881;</h2>
+	          <li>Inheritance</li>
+						<pre>
+							<code class="hljs" data-trim contenteditable>
+							/* CSS */
+							:root {
+							  --su-color: blue;
+							  --su-cool-background: yellow;
+							}
+							.inheritance {
+							  --main-color: red;
+							}
+							p {
+							  color: var(--main-color);
+							}
+							----------------------------------------------
+							<!-- HTML -->
+							<div>
+							  <p>blue paragraph.</p>
+							  <div class="inheritance">
+							    <p>red paragraph.</p>
+							  </div>
+							</div>
+						</code>
+					 </pre>
+				  </section>
+					<section data-background="#1EA5A3">
+						<h2>Fun parts &#127881; &#127881;</h2>
+		          <li>Avoids redundancy</li>
+		          <li>Making Exceptions</li>
+					</section>
+	       </section>
+
+				 <section data-background="#1EA5A3">
+					 <section data-background="#1EA5A3">
+						 <p> There are obvious ifs and buts &#128584;</p>
+						 <li>Valid and Invalids</li>
+						 <pre>
+							 <code class="hljs" data-trim contenteditable>
+								 --su:; //Invalid
+								 --su: ; //Valid
+								 --su; is not --SU;
+								 padding: var(--su)px; //Invalid
+								 url(var(--image-url)) //Invalid
+							 </code>
+						 </pre>
+					 </section>
+					 <section data-background="#1EA5A3">
+						 <p> There are obvious ifs and buts &#128584;
+							 <li>Cannot be property name</li>
+							 <pre>
+								 <code class="hljs" data-trim contenteditable>
+
+								 fedMeetup {
+
+								   --su: margin-top;
+								   var(--su): 20px; //This is not equivalent
+																		 to setting margin-top: 20px;
+
+								 }
+
+								 .fedMeetup {
+
+								   --su: 20;
+								   margin-top: var(--su)px; //This doesn’t work either
+
+								 }
+								 </code>
+							 </pre>
+						 </p>
+				 </section>
+			 </section>
+
+				<section data-background="https://media.giphy.com/media/3ohzdUi5U8LBb4GD4s/giphy.gif">
+					<h2>But!!!!</h2>
+				</section>
+
+				<section data-background="#1EA5A3">
+					<image src="images/caniuse.png"></image>
+				</section>
+
+				<section data-background="#1EA5A3">
+					<h2>My Reference List :</h2>
+					<li style="font-size: 30px;">https://www.youtube.com/watch?v=kZOJCVvyF-4 : JSConf by Lea Verou</li>
+					<li style="font-size: 30px;">https://developers.google.com/web/updates/2016/02/css-variables-why-should-you-care</li>
+					<li style="font-size: 30px;">https://philipwalton.com/articles/why-im-excited-about-native-css-variables/</li>
+					<li style="font-size: 30px;">https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_variables</li>
+					<li style="font-size: 30px;">https://css-tricks.com/difference-between-types-of-css-variables/</li>
+					<li style="font-size: 30px;">https://medium.com/dev-channel/css-variables-no-really-76f8c91bd34e</li>
+					<li style="font-size: 30px;">https://vgpena.github.io/winning-with-css-variables/</li>
+					<li style="font-size: 30px;">https://hospodarets.com/css_properties_in_depth</li>
+					<li style="font-size: 30px;">https://una.im/local-css-vars/#💁</li>
+				</section>
+
+				<section data-background="https://media.giphy.com/media/KJ1f5iTl4Oo7u/giphy.gif">
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

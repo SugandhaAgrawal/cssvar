@@ -1,0 +1,30 @@
+.img-vue {
+  height: 500px;
+  width: 500px;
+}
+
+.img-vue__aud, .img-vue__screen {
+  height: 500px;
+  width:1000px;
+}
+
+.reveal table th, .reveal table td {
+    text-align: left;
+    padding: 0.2em 0.5em 0.2em 0.5em;
+    border: 1px solid;
+    font-size: 28px;
+}
+
+.reveal table {
+    margin: auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.ul-vue li {
+  font-size: 32px;
+}
+
+.bgcolor-vue {
+  background-color: #1EA5A3;
+}
